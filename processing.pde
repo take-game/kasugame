@@ -1,11 +1,11 @@
-/* @pjs preload="kasuga.jpeg"; */
+/* @pjs preload="kasuga.png"; */
 PImage img;
 
 void setup(){
   size(500,400);
   noLoop();
   fill(10);
-  img = loadImage("kasuga.jpeg");
+  img = loadImage("kasuga.png");
 }
 
 void draw(){
