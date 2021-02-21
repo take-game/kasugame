@@ -1,6 +1,8 @@
 /* @pjs preload="kasuga.jpeg"; */
+/* @pjs preload="umi.jpg"; */
 
 PImage img;
+PImage imgBack;
 int number = 30;
 int gseq;
 int mcnt;
@@ -65,10 +67,12 @@ void setup(){
   background(122);
   noStroke();
   img = loadImage("kasuga.jpeg");
+  imgBack = loadImage("umi.jpg");
   gameInit();
 }
 void draw(){
   if( gseq == 0){
+    background(0);
     gameTitle1();
   }else if( gseq == 1){
     b();
@@ -114,7 +118,21 @@ void gamePlay(){
   smooth();
 }
 void b(){
-  background(122);
+  screenPx += scroll;
+  
+  if(screenPx > window_w){
+    if(screenPx > back_w+window_w){
+      screenPx = window_w;
+    }
+    else{
+      copy(imgBack,screenPx,0,back_w-screenPx,w_HEIGHT,0,0,back_w-screenPx,w_HEIGHT);
+      copy(imgBack,0,0,window_w-(back_w-window_w-screenPx),w_HEIGHT,back_w-screenPx,0,window_w-(back_w-window_w-screenPx),w_HEIGHT);
+    }
+  }
+  else{
+    copy(imgBack,screenPx,0,window_w,w_HEIGHT,0,0,window_w,w_HEIGHT);
+  }
+  image(imgBack,screenPx,0,window_w,w_HEIGHT);
 }
 void gameOver(){
   textSize(80);
