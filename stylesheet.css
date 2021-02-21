@@ -27,17 +27,11 @@ li {
   padding: 100px 80px;
 }
 
-.copy-container h1 {
-  font-size: 140px;
-}
 
 .copy-container h2 {
   font-size: 60px;
 }
 
-.copy-container span {
-  color: #ff4a4a;
-}
 
 .contents {
   height: 500px;
@@ -66,10 +60,6 @@ input,textarea{
  border:1px solid #dee7ec ;
 }
 
-.contact-submit{
-  background-color:#dee7ec;
-  color:#889eab;
-}
 
 .footer {
   background-color: #2f5167;
