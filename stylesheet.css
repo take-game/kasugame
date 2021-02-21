@@ -34,17 +34,17 @@ li {
 
 
 .contents {
-  height: 1000px;
+  height: 800px;
 }
 
 .footer {
   background-color: #26d0c9;
   color: #fff;
-  height: 180px;
+  height: 90px;
 }
 
 .footer-logo {
   float: left;
-  font-size: 50px;
+  font-size: 36px;
   padding: 20px 40px;
 }
