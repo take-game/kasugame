@@ -2,7 +2,7 @@
 PImage img;
 
 void setup(){
-  size(500,400);
+  size(1200,1200);
   noLoop();
   fill(10);
   img = loadImage("kasuga.png");
