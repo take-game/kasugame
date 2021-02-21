@@ -9,6 +9,6 @@ void setup(){
 }
 
 void draw(){
-    text("test",10,100);
     image(img,0,0);
+    text("test",10,100);
 }
