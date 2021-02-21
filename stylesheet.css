@@ -36,3 +36,15 @@ li {
 .contents {
   height: 1800px;
 }
+
+.footer {
+  background-color: #26d0c9;
+  color: #fff;
+  height: 180px;
+}
+
+.footer-logo {
+  float: left;
+  font-size: 50px;
+  padding: 20px 40px;
+}
