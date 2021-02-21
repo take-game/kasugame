@@ -41,9 +41,8 @@ int sv_diameter =150;
 int sv_ex[] = new int [10]; //1=on,0=off
 
 void setup(){
-  size(900,900);
+  size(1200,800);
   noStroke();
-  
   img1 = loadImage("dekkatyan.jpeg");
   img2 = loadImage("kasuga.jpeg");
   img3 = loadImage("matyamatya.jpeg");
@@ -51,7 +50,6 @@ void setup(){
   back1 = loadImage("kawa.jpeg");
   back2 = loadImage("pool.png");
   back3 = loadImage("cosmo.jpg");
-
   gameInit();
 }
 void draw(){
@@ -156,7 +154,7 @@ void iMove(){
   i_y = constrain(i_y, i_h, height-i_h);
 }
 void bDisp(){
-  image(back,0,0,height,width);
+  image(back,0,0,width,height);
   strokeWeight(0);
   stroke(255);
   line(0,height/2,width,height/2);
@@ -352,8 +350,7 @@ void ClearEf(){
   i_y = height/2-i_h/2;
   i_h +=2.0;
   i_w +=2.0;
-  }
-    if(i_w>width/2 - 30){
+  }else{
     gseq = 3;
   }
 }
