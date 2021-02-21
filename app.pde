@@ -73,7 +73,15 @@ void EnemySet(){
 void setup(){
   size(1024,768);
   noStroke();
-  StackData();
+  imgBack = loadImage("umi.jpg");
+  imgPlayer = loadImage("kasuga.jpeg");
+  for(int i=0;i<10;i++)
+    imgEnemy1[i] = loadImage("sora.jpg");
+  imgEnemyS = loadImage("umi.jpg");
+  imgEnemyB = loadImage("sora.jpg");
+  minim = new Minim(this);  
+  exp1 = minim.loadFile("exp1.mp3");
+  exp2 = minim.loadFile("exp2.mp3");
   gameInit();
 }
 void draw(){
@@ -173,18 +181,6 @@ void mousePressed(){
   if( gseq == 4 ){
     gameInit();
   }
-}
-void StackData(){
-  imgBack = loadImage("umi.jpg");
-  imgPlayer = loadImage("kasuga.jpeg");
-  for(int i=0;i<10;i++)
-    imgEnemy1[i] = loadImage("sora.jpg");
-  imgEnemyS = loadImage("umi.jpg");
-  imgEnemyB = loadImage("sora.jpg");
-  minim = new Minim(this);  
-  exp1 = minim.loadFile("exp1.mp3");
-  exp2 = minim.loadFile("exp2.mp3");
-    
 }
 void backDisp(){
   screenPx += scroll;
