@@ -7,7 +7,7 @@ void setup(){
   noLoop();
   fill(10);
   img = loadImage("kasuga.png");
-  img1 = loadImage("kasuga.png");
+  img1 = loadImage("umi.jpg");
 }
 
 void draw(){
