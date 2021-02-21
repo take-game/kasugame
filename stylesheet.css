@@ -29,54 +29,11 @@ li {
 
 
 .copy-container h2 {
-  font-size: 60px;
+  font-size: 30px;
 }
 
 
 .contents {
   height: 500px;
   margin-top: 100px;
-}
-
-.section-title {
-  border-bottom: 2px solid #dee7ec;
-  font-size: 28px;
-  padding-bottom: 15px;
-  margin-bottom: 50px;
-}
-
-
-
-.contact-form {
-  padding-top: 100px;
-}
-
-input,textarea{
- width:400px;
- margin-top:10px;
- margin-bottom:30px;
- padding:20px;
- font-size:18px;
- border:1px solid #dee7ec ;
-}
-
-
-.footer {
-  background-color: #2f5167;
-  color: #fff;
-  height: 120px;
-  padding: 40px;
-}
-
-.footer-logo {
-  float: left;
-  font-size: 32px;
-}
-
-.footer-list {
-  float: right;
-}
-
-.footer-list li {
-  padding-bottom: 20px;
 }
