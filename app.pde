@@ -43,7 +43,15 @@ int sv_ex[] = new int [10]; //1=on,0=off
 void setup(){
   size(900,900);
   noStroke();
-  StackData();
+  
+  img1 = loadImage("dekkatyan.jpeg");
+  img2 = loadImage("kasuga.jpeg");
+  img3 = loadImage("matyamatya.jpeg");
+  pkey = loadImage("jouro.png");
+  back1 = loadImage("kawa.jpeg");
+  back2 = loadImage("pool.png");
+  back3 = loadImage("cosmo.jpg");
+
   gameInit();
 }
 void draw(){
@@ -311,15 +319,7 @@ void Kougeki(){
     }
   }
 }
-void StackData(){
-  img1 = loadImage("dekkatyan.jpeg");
-  img2 = loadImage("kasuga.jpeg");
-  img3 = loadImage("matyamatya.jpeg");
-  pkey = loadImage("jouro.png");
-  back1 = loadImage("kawa.jpeg");
-  back2 = loadImage("pool.png");
-  back3 = loadImage("cosmo.jpg");
-}
+
 void spKougeki(){
   Kougeki();
   for(int i=0;i<10;i++){
