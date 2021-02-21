@@ -1,17 +1,7 @@
-/* @pjs preload="umi.jpg,kasuga.jpeg,sora.jpg"; */
+/* @pjs preload="kasuga.jpeg"; */
 
-import ddf.minim.*;
-Minim minim;
-AudioPlayer sound;
-AudioPlayer exp1; 
-AudioPlayer exp2;
-
+PImage img;
 int number = 30;
-PImage imgBack;
-PImage imgPlayer;
-PImage imgEnemy1[] = new PImage[10];
-PImage imgEnemyS;
-PImage imgEnemyB;
 int gseq;
 int mcnt;
 int HP;
@@ -72,27 +62,19 @@ void EnemySet(){
 
 void setup(){
   size(1024,768);
+  background(122);
   noStroke();
-  imgBack = loadImage("umi.jpg");
-  imgPlayer = loadImage("kasuga.jpeg");
-  for(int i=0;i<10;i++)
-    imgEnemy1[i] = loadImage("sora.jpg");
-  imgEnemyS = loadImage("umi.jpg");
-  imgEnemyB = loadImage("sora.jpg");
-  minim = new Minim(this);  
-  exp1 = minim.loadFile("exp1.mp3");
-  exp2 = minim.loadFile("exp2.mp3");
+  img = loadImage("kasuga.jpeg");
   gameInit();
 }
 void draw(){
   if( gseq == 0){
-    background(0);
     gameTitle1();
   }else if( gseq == 1){
-    background(0);
+    b();
     gameTitle2();
   }else if ( gseq == 2){
-    image(imgBack,1024,0,window_w,w_HEIGHT);
+ 
     gamePlay();
   }else if ( gseq == 3){
     background(0);
@@ -121,7 +103,7 @@ void gameInit(){
   eBClear();
 }
 void gamePlay(){
-  backDisp();
+  b();
   pDisp();
   pbDisp();
   eBDisp();
@@ -129,7 +111,10 @@ void gamePlay(){
   ScoreDisp();
   if(HP < 1)
     gseq = 3 ;
-  noLoop();
+  smooth();
+}
+void b(){
+  background(122);
 }
 void gameOver(){
   textSize(80);
@@ -182,23 +167,6 @@ void mousePressed(){
     gameInit();
   }
 }
-void backDisp(){
-  screenPx += scroll;
-  
-  if(screenPx > window_w){
-    if(screenPx > back_w+window_w){
-      screenPx = window_w;
-    }
-    else{
-      copy(imgBack,screenPx,0,back_w-screenPx,w_HEIGHT,0,0,back_w-screenPx,w_HEIGHT);
-      copy(imgBack,0,0,window_w-(back_w-window_w-screenPx),w_HEIGHT,back_w-screenPx,0,window_w-(back_w-window_w-screenPx),w_HEIGHT);
-    }
-  }
-  else{
-    copy(imgBack,screenPx,0,window_w,w_HEIGHT,0,0,window_w,w_HEIGHT);
-  }
-  image(imgBack,screenPx,0,window_w,w_HEIGHT);
-}
 
 void pDisp(){
   if(keyPressed && (key == CODED)) {
@@ -220,7 +188,8 @@ void pDisp(){
   gravity();
   px = constrain(px, -2*pw, width-pw);
   py = constrain(py, 0, gh-ph );
-  image(imgPlayer,px,py,pw,ph);
+  fill(0);
+  image(img,px,py,pw,ph);
   pAtta();
   pbMove();
 }
@@ -284,9 +253,11 @@ void e1Disp(){
       e1_pbHitCheck(i);
       e1Move(i);
       if(e1HP[i] < E1HP+1){
-        image(imgEnemy1[i],e1x[i], e1y[i], e1_diameter,e1_diameter);
+        fill(0);
+        rect(e1x[i], e1y[i], e1_diameter,e1_diameter);
       }else
-        image(imgEnemyS,e1x[i], e1y[i], e1_diameter,e1_diameter);
+        fill(255);
+        rect(e1x[i], e1y[i], e1_diameter,e1_diameter);
     }
   }
 }
@@ -310,10 +281,6 @@ void e1Move(int no){
           }
       if(e1HP[no]<0){
         e1Clear(no);
-        if(sound != exp1)
-          sound = exp1;
-        sound.rewind();
-        sound.play();
         if(eB_ex == 0)
           count_B++;
       }
@@ -351,7 +318,8 @@ void eBDisp(){
         eBHitCheck();
         pb_eBHitCheck();
         eBMove();
-        image(imgEnemyB,eBx, eBy, eB_diameter,eB_diameter);
+        fill(255);
+        rect(eBx, eBy, eB_diameter,eB_diameter);
     }
 }
 void eBClear(){
@@ -384,9 +352,6 @@ void eBMove(){
           }
       if(eBHP<0){
         eBClear();
-        sound = exp2;
-        sound.rewind();
-        sound.play();
       }
 }
 void eBHitCheck(){
@@ -407,9 +372,4 @@ void pb_eBHitCheck(){
         }
     }
   }
-}
-void stop(){
-  sound.close();
-  minim.stop();
-  super.stop();
 }
