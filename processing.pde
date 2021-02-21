@@ -1,3 +1,4 @@
+/* @pjs preload="kasuga.jpeg"; */
 PImage img;
 
 void setup(){
