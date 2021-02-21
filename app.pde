@@ -67,6 +67,7 @@ void draw(){
   }
 }
 void gameInit(){
+  frameRate(60);
   gseq= 0;
   mcnt = 0;
   count = 0;
