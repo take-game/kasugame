@@ -129,7 +129,7 @@ void gamePlay(){
   ScoreDisp();
   if(HP < 1)
     gseq = 3 ;
-  smooth();
+  noLoop();
 }
 void gameOver(){
   textSize(80);
