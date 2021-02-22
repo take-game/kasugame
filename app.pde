@@ -1,14 +1,4 @@
-/* @pjs preload="dekkatyan.jpeg,kasuga.jpeg,matyamatya.jpeg,jouro.png,kawa.jpeg,pool.png,cosmo.jpg,exp2.mp3"; */
-
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
-import ddf.minim.signals.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
-Minim minim;
-AudioPlayer sound;
-
+/* @pjs preload="dekkatyan.jpeg,kasuga.jpeg,matyamatya.jpeg,jouro.png,kawa.jpeg,pool.png,cosmo.jpg; */
 PImage img;
 PImage img1;
 PImage img2;
@@ -54,8 +44,6 @@ void setup(){
   size(1200,800);
   noStroke();
   frameRate(28);
-  minim = new Minim(this); 
-  sound = minim.loadFile("exp2.mp3");
   img1 = loadImage("dekkatyan.jpeg");
   img2 = loadImage("kasuga.jpeg");
   img3 = loadImage("matyamatya.jpeg");
@@ -218,8 +206,10 @@ void hitCheck(){
   if((i_x< (e_x+e_diameter)) &&((i_x+i_w) >e_x)
     &&(i_y <(e_y+e_diameter)) && ((i_y+i_h) > e_y)){
       eClear();
-      count++;
-      Scount--;
+      if(count<50){
+        count++;
+        Scount--;
+      }
     }
   for(int i=0;i<10;i++){
   if((mouseX< (v_x[i]+v_diameter)) &&((mouseX+p_w) >v_x[i])
@@ -234,7 +224,7 @@ void scoreDisp(){
   fill(255,0,0);
   //text("count:"+count,600,40);
   //text("count2:"+count2,300,40);
-  text("count:"+Scount,900,40);
+  text("appetite:"+Scount,850,40);
   text("HP:"+HP,100,40);
 }
 void Shinka(){
@@ -331,8 +321,6 @@ void Kougeki(){
         v_ex[i]=1;
         v_x[i]=i_x+i_w/2;
         v_y[i]=i_y+i_h/2;
-        sound.play();
-        sound.rewind();
       }
     }
   }
@@ -369,13 +357,8 @@ void ClearEf(){
   i_y = height/2-i_h/2;
   i_h +=2.0;
   i_w +=2.0;
-  Scount = 0;
+  Scount+=103;
   }else{
     gseq = 3;
   }
-}
-void stop(){
-  sound.close();
-  minim.stop();
-  super.stop();
 }
