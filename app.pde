@@ -1,7 +1,11 @@
 /* @pjs preload="dekkatyan.jpeg,kasuga.jpeg,matyamatya.jpeg,jouro.png,kawa.jpeg,pool.png,cosmo.jpg,exp2.mp3"; */
-/* @pjs preload="exp2.mp3";*/
 
 import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
 Minim minim;
 AudioPlayer sound;
 
