@@ -1,5 +1,9 @@
 /* @pjs preload="dekkatyan.jpeg,kasuga.jpeg,matyamatya.jpeg,jouro.png,kawa.jpeg,pool.png,cosmo.jpg"; */
 
+import ddf.minim.*;
+Minim minim;
+AudioPlayer sound;
+
 PImage img;
 PImage img1;
 PImage img2;
@@ -44,7 +48,9 @@ int sv_ex[] = new int [10]; //1=on,0=off
 void setup(){
   size(1200,800);
   noStroke();
-  frameRate(30);
+  frameRate(28);
+  minim = new Minim(this); 
+  sound = minim.loadFile("exp2.mp3");
   img1 = loadImage("dekkatyan.jpeg");
   img2 = loadImage("kasuga.jpeg");
   img3 = loadImage("matyamatya.jpeg");
@@ -218,7 +224,6 @@ void hitCheck(){
     }
   }
 }
-
 void scoreDisp(){
   textSize(50);
   fill(255,0,0);
@@ -321,6 +326,8 @@ void Kougeki(){
         v_ex[i]=1;
         v_x[i]=i_x+i_w/2;
         v_y[i]=i_y+i_h/2;
+        sound.play();
+        sound.rewind();
       }
     }
   }
@@ -361,4 +368,9 @@ void ClearEf(){
   }else{
     gseq = 3;
   }
+}
+void stop(){
+  sound.close();
+  minim.stop();
+  super.stop();
 }
