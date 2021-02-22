@@ -22,6 +22,7 @@ float e_diameter =10.5;
 int e_ex; //1=on,0=off
 int count;
 int count2;
+int Scount;
 int G;
 int p_x;
 int p_y;
@@ -43,6 +44,7 @@ int sv_ex[] = new int [10]; //1=on,0=off
 void setup(){
   size(1200,800);
   noStroke();
+  frameRate(30);
   img1 = loadImage("dekkatyan.jpeg");
   img2 = loadImage("kasuga.jpeg");
   img3 = loadImage("matyamatya.jpeg");
@@ -65,7 +67,6 @@ void draw(){
   }
 }
 void gameInit(){
-  frameRate(30);
   gseq= 0;
   mcnt = 0;
   count = 0;
@@ -79,6 +80,7 @@ void gameInit(){
   von =0;
   vP =10;
   vv =0;
+  Scount = 3;
   for(int i=0;i<10;i++){
   vClear(i);
   }
@@ -206,6 +208,7 @@ void hitCheck(){
     &&(i_y <(e_y+e_diameter)) && ((i_y+i_h) > e_y)){
       eClear();
       count++;
+      Scount--;
     }
   for(int i=0;i<10;i++){
   if((mouseX< (v_x[i]+v_diameter)) &&((mouseX+p_w) >v_x[i])
@@ -219,22 +222,26 @@ void hitCheck(){
 void scoreDisp(){
   textSize(50);
   fill(255,0,0);
-  text("count:"+count,600,40);
-  text("count2:"+count2,300,40);
-  text("HP:"+HP,0,40);
+  //text("count:"+count,600,40);
+  //text("count2:"+count2,300,40);
+  text("count:"+Scount,900,40);
+  text("HP:"+HP,100,40);
 }
 void Shinka(){
   if(count2==1){
     if(count==3){
       count2=count;  
+      Scount = 7;
     }
   }else if(count2 == 4){
     if(count==10){
       count2=count;
+      Scount = 20;
     }
   }else if(count2 == 11){
     if(count==30){
-    count2=count;
+      count2=count;
+      Scount = 20;
     }
   }else if(count2 == 31){
     if(count==40){
@@ -265,7 +272,7 @@ void Shinka(){
   back=back3;
   count2 = 11;
   G+=10;
-  vP=9.65;
+  vP=9.75;
   vv=12.0;
   }else if(count2 == 30){
   i_speed+=1.5;
@@ -275,7 +282,7 @@ void Shinka(){
   i_w=250;
   i_h=250;
   v_diameter +=4.0;
-  vP=9.5;
+  vP=9.65;
   vv=14.0;
   }else if(count2 == 40){
   von=2;
@@ -350,6 +357,7 @@ void ClearEf(){
   i_y = height/2-i_h/2;
   i_h +=2.0;
   i_w +=2.0;
+  Scount = 0;
   }else{
     gseq = 3;
   }
