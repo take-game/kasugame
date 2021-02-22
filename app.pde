@@ -75,7 +75,7 @@ void gameInit(){
   i_w =200;
   i_h =200;
   G = 6;
-  HP = 10;
+  HP = 3;
   von =0;
   vP =10;
   vv =0;
@@ -103,6 +103,7 @@ void gamePlay(){
   smooth();
 }
 void gameOver(){
+  iDisp();
   textSize(80);
   fill(255,255,0);
   text("GAME OVER",width/2-250,height/2-50);
@@ -112,6 +113,15 @@ void gameOver(){
     fill(255);
     text("Click to retry!",width/2-150,height/2+150);
   }
+  if(i_x<width){
+  i_x+=10;
+  }else if(i_y-i_h>0){
+  i_x=-i_w;
+  i_y-=i_h;
+  }else{
+  i_x=0;
+  i_y=height-i_h+G;
+  }
 }
 void gameTitle(){
   iDisp();
@@ -120,7 +130,7 @@ void gameTitle(){
   if((mcnt%60) < 40){
     textSize(80);
     fill(255,255,0);
-    text("Click to start",width/2-250,height/2-50);
+    text("Click to start!!",width/2-250,height/2-50);
   }
 }
 void gameClear(){
@@ -130,6 +140,8 @@ void gameClear(){
     textSize(80);
     fill(255,255,0);
     text("Game Clear!!",width/2-250,height/2-50);
+    textSize(50);
+    text("Thank you for LOVE",width/2-250,height/2-150);
   }
 }
 void mousePressed(){
