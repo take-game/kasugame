@@ -1,4 +1,4 @@
-/* @pjs preload="dekkatyan.jpeg,kasuga.jpeg,matyamatya.jpeg,jouro.png,kawa.jpeg,pool.png,cosmo.jpg"; */
+/* @pjs preload="dekkatyan.jpeg,kasuga.jpeg,matyamatya.jpeg,jouro.png,kawa.jpeg,pool.png,cosmo.jpg,exp2.mp3"; */
 
 import ddf.minim.*;
 Minim minim;
